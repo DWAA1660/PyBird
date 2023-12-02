@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
-import random
 from selenium.webdriver.common.keys import Keys
+import secrets
 
 class Bird(object):
     # Define Bird
@@ -22,21 +22,21 @@ class Bird(object):
         print("Logging in...")
         self.driver.get("https://twitter.com/i/flow/login") #Login Page
 
-        time.sleep(2 + random.uniform(0, 1)) #Sleeping so it can let page refresh and open / make twitter think we user
+        time.sleep(2 + secrets.SystemRandom().uniform(0, 1)) #Sleeping so it can let page refresh and open / make twitter think we user
         #Username input
-        time.sleep(random.uniform(0, 1))
+        time.sleep(secrets.SystemRandom().uniform(0, 1))
         textbox = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input')
         for letter in self.username:
             textbox.send_keys(letter)
         textbox.send_keys(Keys.ENTER)
 
-        time.sleep(1 + random.uniform(0, 1))
+        time.sleep(1 + secrets.SystemRandom().uniform(0, 1))
         #Password input
         textbox = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input')
         for letter in self.password:
             textbox.send_keys(letter)
         textbox.send_keys(Keys.ENTER)
-        time.sleep(1 + random.uniform(0, 1))
+        time.sleep(1 + secrets.SystemRandom().uniform(0, 1))
 
         print("Logged in!")
 
